@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <title>Frontend Mentor | E-commerce product page</title>
+
+    <style>
+      body {
+        font-family: sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 30px;
+        gap: 70px;
+        position: relative;
+      }
+      navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 10px;
+      }
+
+      .left {
+        display: flex;
+        gap: 30px;
+        align-items: center;
+      }
+      .list {
+        display: flex;
+        gap: 30px;
+        align-items: center;
+      }
+      .right {
+        display: flex;
+        gap: 30px;
+      }
+      .photos {
+        display: flex;
+        gap: 27px;
+      }
+      .prod:hover {
+        filter: opacity(70%);
+        border: 1px solid orange;
+      }
+      .prod {
+        width: 130px;
+        height: 130px;
+        border-radius: 15px;
+      }
+      .info {
+        display: flex;
+        width: 80%;
+        justify-content: center;
+        gap: 70px;
+      }
+      .features {
+        padding: 60px;
+      }
+      .price {
+        display: flex;
+        flex-direction: column;
+      }
+      .price-1 {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .discount {
+        background-color: black;
+        width: 60px;
+        color: white;
+        border-radius: 5px;
+        height: 30px;
+      }
+      .buttons {
+        display: flex;
+        gap: 10px;
+      }
+      .add {
+        display: flex;
+        gap: 40px;
+        border-radius: 10px;
+        border: none;
+        justify-content: center;
+        align-items: center;
+        width: 200px;
+        height: 60px;
+      }
+      h1:hover {
+        filter: brightness(70%);
+      }
+      p:hover {
+        filter: brightness(70%);
+      }
+      h2:hover {
+        filter: brightness(70%);
+      }
+      .add:hover {
+        background-color: rgb(221, 212, 212);
+      }
+      .add-to-cart {
+        display: flex;
+        border: none;
+        justify-content: center;
+        border-radius: 10px;
+        gap: 20px;
+
+        align-items: center;
+        background-color: hsl(26, 100%, 55%);
+        width: 300px;
+        height: 60px;
+      }
+      .add-to-cart:hover {
+        background-color: hsl(26, 79%, 46%);
+      }
+      .burger-menu {
+        display: none;
+      }
+
+      .menu {
+        display: none;
+      }
+
+      nav {
+        background-color: white;
+        position: absolute;
+        left: 50px;
+        z-index: 3;
+        top: 250px;
+        border-radius: 20px;
+        width: 400px;
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 30px;
+      }
+      .arrow1 {
+        display: none;
+      }
+      .arrow2 {
+        display: none;
+      }
+
+      .Appearbox {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 130px;
+        left: 550px;
+        z-index: 5;
+        gap: 20px;
+        align-items: end;
+      }
+      .appearProduct {
+        width: 600px;
+        height: 600px;
+        border-radius: 15px;
+      }
+      .arrow1Appear {
+        position: absolute;
+        top: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        left: -20px;
+      }
+      .arrow1Appear:hover {
+        filter: brightness(70%);
+      }
+      .arrow2Appear:hover {
+        filter: brightness(70%);
+      }
+      .arrow2Appear {
+        position: absolute;
+        top: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        right: -20px;
+      }
+      .AppearPhotos {
+        display: flex;
+        gap: 27px;
+      }
+      .close {
+        width: 30px;
+        height: 30px;
+      }
+
+      .prod1 {
+        width: 130px;
+        height: 130px;
+        border-radius: 15px;
+      }
+      .prod1:hover {
+        filter: brightness(70%);
+      }
+      .prod2 {
+        width: 130px;
+        height: 130px;
+        border-radius: 15px;
+      }
+      .prod3 {
+        width: 130px;
+        height: 130px;
+        border-radius: 15px;
+      }
+      .prod4 {
+        width: 130px;
+        height: 130px;
+        border-radius: 15px;
+      }
+      .prod2:hover {
+        filter: brightness(70%);
+      }
+      .prod3:hover {
+        filter: brightness(70%);
+      }
+      .prod4:hover {
+        filter: brightness(70%);
+      }
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: none;
+        z-index: 4;
+        background: rgba(12, 12, 12, 0.7);
+      }
+
+      @media screen and (max-width: 600px) {
+        .menu {
+          display: flex;
+        }
+        body {
+          padding: 0px;
+        }
+        navbar {
+          padding: 0px;
+        }
+        .list {
+          display: none;
+        }
+
+        .info {
+          flex-direction: column;
+        }
+        .features {
+          padding: 1px;
+        }
+        .photos {
+          display: none;
+        }
+        .info {
+          display: flex;
+          padding: 2px;
+          align-items: center;
+          justify-content: center;
+          gap: 40px;
+        }
+        .p {
+          font-size: 25px;
+          line-height: 45px;
+        }
+        .price {
+          flex-direction: row;
+          align-items: center;
+
+          justify-content: space-between;
+        }
+        .price-1 {
+          font-size: 20px;
+        }
+        .buttons {
+          flex-direction: column;
+        }
+        .arrow1 {
+          position: absolute;
+          z-index: 2;
+          top: 500px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: white;
+          width: 70px;
+          height: 70px;
+          border-radius: 50%;
+          left: 25px;
+        }
+        .arrow1:hover {
+          filter: brightness(70%);
+        }
+        .arrow2 {
+          position: absolute;
+          z-index: 2;
+          top: 500px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: white;
+          width: 70px;
+          height: 70px;
+          border-radius: 50%;
+          right: 25px;
+        }
+        .arrow2:hover {
+          filter: brightness(70%);
+        }
+        .add {
+          justify-content: space-around;
+          border-radius: 10px;
+          font-size: 20px;
+          width: 500px;
+          height: 100px;
+        }
+        .add-to-cart {
+          width: 500px;
+          height: 100px;
+        }
+        .sneakers {
+          font-size: 60px;
+        }
+      }
+    </style>
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  </head>
+  <body>
+    <div class="overlay"></div>
+    <div class="Appearbox">
+      <img class="close" src="images/icon-close.svg" />
+      <img class="appearProduct" src="images/image-product-1.jpg" />
+      <div class="arrow1Appear">
+        <img style="width: 20px; height: 25px" src="images/icon-previous.svg" />
+      </div>
+      <div class="arrow2Appear">
+        <img style="width: 20px; height: 25px" src="images/icon-next.svg" />
+      </div>
+      <div class="AppearPhotos">
+        <img class="prod1" src="images/image-product-1-thumbnail.jpg" />
+        <img class="prod2" src="images/image-product-2-thumbnail.jpg" />
+        <img class="prod3" src="images/image-product-3-thumbnail.jpg" />
+        <img class="prod4" src="images/image-product-4-thumbnail.jpg" />
+      </div>
+    </div>
+    <navbar>
+      <nav class="burger-menu">
+        <h2>Collections</h2>
+        <h2>Men</h2>
+        <h2>Women</h2>
+        <h2>About</h2>
+        <h2>Contact</h2>
+      </nav>
+      <div class="left">
+        <img
+          class="menu"
+          style="width: 40px; height: 35px"
+          src="images/icon-menu.svg"
+        />
+
+        <h1 class="sneakers">sneakers</h1>
+        <div class="list">
+          <p>Collections</p>
+          <p>Men</p>
+          <p>Women</p>
+          <p>About</p>
+          <p>Contact</p>
+        </div>
+      </div>
+      <div class="right">
+        <img style="width: 30px; height: 30px" src="images/icon-cart.svg" />
+        <img style="width: 40px; height: 40px" src="images/image-avatar.png" />
+      </div>
+    </navbar>
+
+    <div class="info">
+      <div
+        class="product"
+        style="display: flex; flex-direction: column; gap: 30px"
+      >
+        <img
+          class="main-product"
+          style="width: 600px; height: 600px; border-radius: 15px"
+          src="images/image-product-1.jpg"
+        />
+        <div class="arrow1">
+          <img
+            style="width: 20px; height: 25px"
+            src="images/icon-previous.svg"
+          />
+        </div>
+        <div class="arrow2">
+          <img style="width: 20px; height: 25px" src="images/icon-next.svg" />
+        </div>
+        <div class="photos">
+          <img class="prod" src="images/image-product-1-thumbnail.jpg" />
+          <img class="prod" src="images/image-product-2-thumbnail.jpg" />
+          <img class="prod" src="images/image-product-3-thumbnail.jpg" />
+          <img class="prod" src="images/image-product-4-thumbnail.jpg" />
+        </div>
+      </div>
+
+      <div class="features">
+        <p>Sneaker Company</p>
+        <h1 style="font-size: 40px">
+          Fall Limited Edition<br />
+          Sneakers
+        </h1>
+        <p class="p" style="color: gray; line-height: 28px">
+          These low-profile sneakers are your perfect casual wear companion.
+          Featuring a durable rubber outer sole, they’ll withstand everything
+          the weather can offer.
+        </p>
+
+        <div class="infor">
+          <div class="price">
+            <div class="price-1">
+              <h1>$125.00</h1>
+              <button class="discount">50%</button>
+            </div>
+            <div class="price2">
+              <p style="text-decoration: line-through; font-size: 25px">
+                $250.00
+              </p>
+            </div>
+          </div>
+
+          <div class="buttons">
+            <button class="add">
+              <img
+                class="minus"
+                style="width: 23px; height: 8px"
+                src="images/icon-minus.svg"
+              />
+              <h2 class="zero" style="font-size: 25px">0</h2>
+              <img
+                class="plus"
+                style="width: 18px; height: 18px"
+                src="images/icon-plus.svg"
+              />
+            </button>
+            <button class="add-to-cart">
+              <img
+                style="width: 20px; height: 20px"
+                src="images/icon-cart.svg"
+              />
+              <h2>Add to Cart</h2>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const nav = document.querySelector("nav");
+      const menuButton = document.querySelector(".menu");
+
+      menuButton.addEventListener("click", function () {
+        nav.classList.toggle("burger-menu");
+        if (menuButton.getAttribute("src") === "images/icon-menu.svg") {
+          menuButton.setAttribute("src", "images/icon-close.svg");
+        } else {
+          menuButton.setAttribute("src", "images/icon-menu.svg");
+        }
+      });
+
+      const minus = document.querySelector(".minus");
+      const plus = document.querySelector(".plus");
+      const zero = document.querySelector(".zero");
+
+      let number = 0;
+      minus.addEventListener("click", function () {
+        number--;
+        zero.textContent = number;
+      });
+
+      plus.addEventListener("click", function () {
+        number++;
+        zero.textContent = number;
+      });
+
+      const addCart = document.querySelector(".add-to-cart");
+      addCart.addEventListener("click", function () {
+        window.alert("You add this product to your Cart !");
+      });
+      //appear box
+      const Appearbox = document.querySelector(".Appearbox");
+      const MainProduct = document.querySelector(".main-product");
+      const closeBtn = document.querySelector(".close");
+      const overlay = document.querySelector(".overlay");
+
+      MainProduct.addEventListener("click", function () {
+        Appearbox.style.display = "flex";
+        overlay.style.display = "block";
+      });
+      closeBtn.addEventListener("click", function () {
+        Appearbox.style.display = "none";
+        overlay.style.display = "none";
+      });
+
+      const appearProduct = document.querySelector(".appearProduct");
+      const prod1 = document.querySelector(".prod1");
+      const prod2 = document.querySelector(".prod2");
+      const prod3 = document.querySelector(".prod3");
+      const prod4 = document.querySelector(".prod4");
+
+      prod1.addEventListener("mouseenter", function () {
+        appearProduct.src = "images/image-product-1.jpg";
+      });
+      prod2.addEventListener("mouseenter", function () {
+        appearProduct.src = "images/image-product-2.jpg";
+      });
+      prod3.addEventListener("mouseenter", function () {
+        appearProduct.src = "images/image-product-3.jpg";
+      });
+      prod4.addEventListener("mouseenter", function () {
+        appearProduct.src = "images/image-product-4.jpg";
+      });
+    </script>
+  </body>
+</html>
